@@ -27,7 +27,10 @@ Puppet::Type.type(:quota).provide(:quota) do
 
   def exists?
     cmd = [command(:repquota), '--show-mntpoint', '--hide-device', '-p', '-w', '-u', "#{@resource[:name]}"].join(' ')
-    out = execute(cmd, {:failonfail => true, :override_locale => true, :squelch => false, :combine => true})
+    
+    # The command exits with an exit code larger than 0 if some user is in the grace period, but the output
+    # is still normal and usable. So never fail.
+    out = execute(cmd, {:failonfail => false, :override_locale => true, :squelch => false, :combine => true})
 
     if out.include? 'none'
       return false
