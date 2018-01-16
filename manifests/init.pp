@@ -7,4 +7,5 @@ class quota inherits quota::params{
   package { $packages:
     ensure => installed,
   }
+
 }
