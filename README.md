@@ -43,8 +43,13 @@ where you wish to manage the quota with this module.
 
 ## Usage
 
+Include the class to ensure the required package(s) are installed, then use the `quota` resource type to specify your rule(s).
+
 Example:
 ```ruby
+
+class { '::quota': }
+
 quota { 'username': 
   name             => 'username',
   ensure           => 'present',
