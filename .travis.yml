@@ -33,6 +33,7 @@ matrix:
 branches:
   only:
     - master
+    - dev-pdk
     - /^v\d/
 notifications:
   email: false
