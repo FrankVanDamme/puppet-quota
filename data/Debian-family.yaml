@@ -1,0 +1,4 @@
+---
+quota::packages:
+  - quota
+  - quotatool
