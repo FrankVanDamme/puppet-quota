@@ -1,10 +1,14 @@
 # Class: quota
 #
 #
-class quota inherits quota::params{
-  $packages = $::quota::params::packages
+class quota(
+  Array $packages,
+  Enum['present', 'absent', 'installed', 'latest'] $ensure,
+
+){
 
   package { $packages:
-    ensure => installed,
+    ensure => $ensure,
   }
+
 }
