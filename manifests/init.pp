@@ -1,11 +1,19 @@
 # Class: quota
 #
+# @param packages
+#   Specifies which packages to install for managing quota. Differs per operating system family
 #
-class quota inherits quota::params{
-  $packages = $::quota::params::packages
+# @param ensure
+#   Wether to install the quota package, and what version to install. 
+#
+class quota(
+  Array $packages,
+  String $ensure,
+
+){
 
   package { $packages:
-    ensure => installed,
+    ensure => $ensure,
   }
 
 }
